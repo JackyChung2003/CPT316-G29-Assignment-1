@@ -27,7 +27,7 @@ Code Explanation (Jacky can see here)
                return f"Type: {self.type.value}, Value: {self.value}"  # Printed in the output
     
 
-###3. Lexical analysis starts here.
+#### 3. Lexical analysis starts here.
 
         Parts in this section:
         (a) Define rules to check if character is an alphabet, integer or alphanumerical
@@ -148,7 +148,10 @@ Code Explanation (Jacky can see here)
 
         return tokens
 
-   # Rule 1: Check for matching {}, [], ()
+#### 4. Violation Rules to detect potential errors in code
+    
+Rule 1: Check for matching {}, [], ()
+        
         def check_matching_bracket(code):
             bracket_pairs = {'(':')', '{':'}', '[':']'}
             stack = []
