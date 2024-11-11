@@ -75,7 +75,9 @@ Code Explanation (Jacky can see here)
             if current_char.isspace():
                 self.position += 1   
                 continue
-            
+   
+   Code (Part b - Identifying Keyword, alphabets, integer, floating and alphanumerical)
+   
             # Identify keywords or identifiers
             if current_char.isalpha():
                 start = self.position
