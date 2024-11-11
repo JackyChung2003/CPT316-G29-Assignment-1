@@ -35,6 +35,7 @@ Code Explanation (Jacky can see here)
         
 
 Code Segment 1
+- Initializing variable to store source code, current position and keyword
 
         // Class that implement lexical analyzer
         class LexicalAnalyzer:
@@ -47,6 +48,7 @@ Code Segment 1
                               # Later used to identify if input is a keyword
 
 Code Segment 2
+- Functions to check if its alphabets, numbers, alphanumerical
 
            # Python has a library which detect alphabets, numerics & alphanumeric
            # Function to check if character is alphabetic
@@ -62,6 +64,7 @@ Code Segment 2
                 return char.isalnum()                
 
 Code Segement 3
+- Initialize array and skip whitespace
 
           # Function to tokenize the input string
             def tokenize(self) -> List[Token]:  # Tokenize Function is called in main function 
@@ -77,7 +80,7 @@ Code Segement 3
                 continue
    
 Code Segment 4 
-- Identifying Keyword, Identifier, Float_Literal, Integer_literal
+- Identifying Keyword, Identifier, Float, Integer, Illegal Identifier
    
             # Identify keywords or identifiers
             if current_char.isalpha():
