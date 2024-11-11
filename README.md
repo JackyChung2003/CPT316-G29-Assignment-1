@@ -2,7 +2,7 @@
 
 Code Explanation (Jacky can see here)
 
-1. Define enum type in our code.
+#####1. Define enum type in our code.
 
         class TokenType(Enum):
            KEYWORD = "KEYWORD"
@@ -17,7 +17,7 @@ Code Explanation (Jacky can see here)
            ILLEGAL_IDENTIFIER = "ILLEGAL_IDENTIFIER"
    
 
-3. Initialize variable to store enum type & actual value. Will be printed in final output
+#####2. Initialize variable to store enum type & actual value. Will be printed in final output
    
        class Token:
            def __init__(self, type: TokenType, value: str):
@@ -27,7 +27,7 @@ Code Explanation (Jacky can see here)
                return f"Type: {self.type.value}, Value: {self.value}"  # Printed in the output
     
 
-4. Lexical analysis starts here.
+#####3. Lexical analysis starts here.
 
         Parts in this section:
         (a) Define rules to check if character is an alphabet, integer or alphanumerical
