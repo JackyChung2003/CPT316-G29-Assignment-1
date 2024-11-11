@@ -35,7 +35,7 @@ Code Explanation (Jacky can see here)
         
 
 ##### Code Segment 1
-- Initializing variable to store source code, current position and keyword
+##### - Initializing variable to store source code, current position and keyword
 
         // Class that implement lexical analyzer
         class LexicalAnalyzer:
@@ -47,8 +47,8 @@ Code Explanation (Jacky can see here)
                               # Set that stores keywords.
                               # Later used to identify if input is a keyword
 
-Code Segment 2
-- Functions to check if its alphabets, numbers, alphanumerical
+##### Code Segment 2
+##### - Functions to check if its alphabets, numbers, alphanumerical
 
            # Python has a library which detect alphabets, numerics & alphanumeric
            # Function to check if character is alphabetic
@@ -64,7 +64,7 @@ Code Segment 2
                 return char.isalnum()                
 
 ##### Code Segement 3
-- Initialize array and skip whitespace
+##### - Initialize array and skip whitespace
 
           # Function to tokenize the input string
             def tokenize(self) -> List[Token]:  # Tokenize Function is called in main function 
@@ -79,8 +79,8 @@ Code Segment 2
                 self.position += 1   
                 continue
    
-Code Segment 4 
-- Identifying Keyword, Identifier, Float, Integer, Illegal Identifier
+##### Code Segment 4 
+##### - Identifying Keyword, Identifier, Float, Integer, Illegal Identifier
    
             # Identify keywords or identifiers
             if current_char.isalpha():
@@ -128,8 +128,8 @@ Code Segment 4
                     else:
                         tokens.append(Token(TokenType.INTEGER_LITERAL, number))
 
-Code Segment 5 
-- identifying operators, separator, punctuation & unknown char
+##### Code Segment 5 
+##### - identifying operators, separator, punctuation & unknown char
 
            # Identify operators
             elif current_char in "+=*/<>":
@@ -155,7 +155,7 @@ Code Segment 5
 
 #### 4. Violation Rules to detect potential errors in code
     
-Rule 1: Check for matching {}, [], ()
+##### Rule 1: Check for matching {}, [], ()
         
         def check_matching_bracket(code):
             bracket_pairs = {'(':')', '{':'}', '[':']'}
@@ -178,7 +178,7 @@ Rule 1: Check for matching {}, [], ()
 
                 return True
 
-Rule 2: Missing semicolon before closing bracket
+##### Rule 2: Missing semicolon before closing bracket
 
         def check_semicolon(code):
             for i in range(1, len(code)):
