@@ -34,7 +34,7 @@ Code Explanation (Jacky can see here)
         (b) Traverse through the input and separate character into individual tokens
         
 
-Code Segment 1
+##### Code Segment 1
 - Initializing variable to store source code, current position and keyword
 
         // Class that implement lexical analyzer
@@ -63,7 +63,7 @@ Code Segment 2
             def is_alphanumeric(self, char: str) -> bool:
                 return char.isalnum()                
 
-Code Segement 3
+##### Code Segement 3
 - Initialize array and skip whitespace
 
           # Function to tokenize the input string
