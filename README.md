@@ -18,12 +18,12 @@ class TokenType(Enum):
 
 2. To be used in the final output. Basically, it prints each tokens enum type and actual value
 
-class Token:
-    def __init__(self, type: TokenType, value: str):
+   class Token:
+       def __init__(self, type: TokenType, value: str):
         self.type = type     // Store enum type
         self.value = value   // Store actual value
 
-   def __str__(self):
+       def __str__(self):
         return f"Type: {self.type.value}, Value: {self.value}"  // Printed in the output  
 
 3. Lexical analysis starts here 
