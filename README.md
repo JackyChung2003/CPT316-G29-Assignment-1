@@ -34,7 +34,7 @@ Code Explanation (Jacky can see here)
         (b) Traverse through the input and separate character into individual tokens
         
 
-   Code
+Code
 
         // Class that implement lexical analyzer
         class LexicalAnalyzer:
@@ -46,7 +46,7 @@ Code Explanation (Jacky can see here)
                               # Set that stores keywords.
                               # Later used to identify if input is a keyword
 
-   Code (Part a) 
+Code (Part a) 
 
            # Python has a library which detect alphabets, numerics & alphanumeric
            # Function to check if character is alphabetic
@@ -61,7 +61,7 @@ Code Explanation (Jacky can see here)
             def is_alphanumeric(self, char: str) -> bool:
                 return char.isalnum()                
 
-   Code (Part b)
+Code (Part b)
 
           # Function to tokenize the input string
             def tokenize(self) -> List[Token]:  # Tokenize Function is called in main function 
@@ -76,7 +76,7 @@ Code Explanation (Jacky can see here)
                 self.position += 1   
                 continue
    
-   Code (Part b) - Identifying Keyword, Identifier, Float_Literal, Integer_literal
+Code (Part b) - Identifying Keyword, Identifier, Float_Literal, Integer_literal
    
             # Identify keywords or identifiers
             if current_char.isalpha():
@@ -124,7 +124,7 @@ Code Explanation (Jacky can see here)
                     else:
                         tokens.append(Token(TokenType.INTEGER_LITERAL, number))
 
-   Code (Part b) - identifying operators, separator, punctuation & unknown char
+Code (Part b) - identifying operators, separator, punctuation & unknown char
 
            # Identify operators
             elif current_char in "+=*/<>":
@@ -173,7 +173,7 @@ Rule 1: Check for matching {}, [], ()
 
                 return True
 
-#Rule 2: Missing semicolon before closing bracket
+Rule 2: Missing semicolon before closing bracket
 
         def check_semicolon(code):
             for i in range(1, len(code)):
