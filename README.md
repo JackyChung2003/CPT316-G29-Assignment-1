@@ -46,22 +46,26 @@ Code Explanation (Jacky can see here)
                               // Set that stores keywords.
                               // Later used to identify if input is a keyword
 
-  // Function to check if character is alphabetic
-    def is_alpha(self, char: str) -> bool:   // Returm True/False
-        return char.isalpha()                // Python Library detects if its an alphabet
-    
-  // Function to check if character is digit
-    def is_digit(self, char:str) -> bool:
-        return char.isdigit()                // Python Library detects if its a number
-    
-  // Function to check if character is alphanumeric
-    def is_alphanumeric(self, char: str) -> bool:
-        return char.isalnum()                // Python Library detects if its an alpha + number
+   Code (Part a) 
 
-  // Function to tokenize the input string
-    def tokenize(self) -> List[Token]:  // Tokenize Function is called in main function 
-                                      // It returns a list of token in the array
-        tokens = []                   // Initialize an empty list to store tokens
+        // Function to check if character is alphabetic
+            def is_alpha(self, char: str) -> bool:   // Returm True/False
+                return char.isalpha()                // Detects if its an alphabet
+    
+          // Function to check if character is digit
+            def is_digit(self, char:str) -> bool:
+                return char.isdigit()                // Detects if its a number
+    
+          // Function to check if character is alphanumeric
+            def is_alphanumeric(self, char: str) -> bool:
+                return char.isalnum()                // Detects if its an alpha + number
+
+   Code (Part b)
+
+          // Function to tokenize the input string
+            def tokenize(self) -> List[Token]:  // Tokenize Function is called in main function 
+                                              // It returns a list of token in the array
+                tokens = []                   // Initialize an empty list to store tokens
 
         while self.position < len(self.input):  // While current position < length (source code)
             current_char = self.input[self.position] // Current character = string[0]
