@@ -1,6 +1,6 @@
 # CPT316-G29-Assignment-1
 
-## Code Explanation (Jacky can see here)
+// Code Explanation (Jacky can see here)
 
 1. Just to define the Enum types that exist in our code
 
@@ -9,22 +9,22 @@ class TokenType(Enum):
     IDENTIFIER = "IDENTIFIER"
     INTEGER_LITERAL = "INTEGER_LITERAL"
     FLOAT_LITERAL = "FLOAT_LITERAL"
-    OPERATOR = "OPERATOR"       # Include arithmetic & relational
+    OPERATOR = "OPERATOR"       // Include arithmetic & relational
     ASSIGNMENT = "ASSIGNMENT"
-    SEPARATOR = "SEPARATOR"     #{}, [], (), ;, :, ","
-    PUNCTUATION = "PUNCTUATION" # \", \', !
-    UNKNOWN = "UNKNOWN"         # @, $, ~, `
+    SEPARATOR = "SEPARATOR"     //{}, [], (), ;, :, ","
+    PUNCTUATION = "PUNCTUATION" // \", \', !
+    UNKNOWN = "UNKNOWN"         // @, $, ~, `
     ILLEGAL_IDENTIFIER = "ILLEGAL_IDENTIFIER"
 
 2. To be used in the final output. Basically, it prints each tokens enum type and actual value
 
 class Token:
     def __init__(self, type: TokenType, value: str):
-        self.type = type      # Store enum type
-        self.value = value    # Store actual value
+        self.type = type     // Store enum type
+        self.value = value   // Store actual value
 
    def __str__(self):
-        return f"Type: {self.type.value}, Value: {self.value}"  # Printed in the output  
+        return f"Type: {self.type.value}, Value: {self.value}"  // Printed in the output  
 
 3. Lexical analysis starts here 
   Parts in this section:
@@ -32,42 +32,42 @@ class Token:
    (b) Traverse through the input and separate character into individual tokens
    (c)  
 
-# Class that implement lexical analyzer
+// Class that implement lexical analyzer
 class LexicalAnalyzer:
     def __init__(self, source: str):
-        self.input = source   # Self.input is a string, it stores the users input here (source code)
-        self.position = 0     # Functions like index/pointer. Data type is int
-                              # Keep track of analyzer current position when analyzing the input. 
+        self.input = source   // Self.input is a string, it stores the users input here (source code)
+        self.position = 0     // Functions like index/pointer. Data type is int
+                              // Keep track of analyzer current position when analyzing the input. 
         self.keyword = {"int", "float", "bool", "print", "if", "else", "return", "while"}
-                              # Set that stores keywords.
-                              # Later used to identify if input is a keyword
+                              // Set that stores keywords.
+                              // Later used to identify if input is a keyword
 
-  # Function to check if character is alphabetic
-    def is_alpha(self, char: str) -> bool:   # Returm True/False
-        return char.isalpha()   # Python Library that detects if its an alphabet
+  // Function to check if character is alphabetic
+    def is_alpha(self, char: str) -> bool:   // Returm True/False
+        return char.isalpha()                // Python Library detects if its an alphabet
     
-  # Function to check if character is digit
+  // Function to check if character is digit
     def is_digit(self, char:str) -> bool:
-        return char.isdigit()    # Python Library that detects if its a number
+        return char.isdigit()                // Python Library detects if its a number
     
-  # Function to check if character is alphanumeric
+  // Function to check if character is alphanumeric
     def is_alphanumeric(self, char: str) -> bool:
-        return char.isalnum()    # Python Library that detects if its a alphabet + number
+        return char.isalnum()                // Python Library detects if its an alpha + number
 
-  # Function to tokenize the input string
-    def tokenize(self) -> List[Token]:  # Tokenize Function is called in main function 
-                                      # It returns a list of token in the array
-        tokens = []                   # Initialize an empty list to store tokens
+  // Function to tokenize the input string
+    def tokenize(self) -> List[Token]:  // Tokenize Function is called in main function 
+                                      // It returns a list of token in the array
+        tokens = []                   // Initialize an empty list to store tokens
 
-        while self.position < len(self.input):  # While current position < length (source code)
-            current_char = self.input[self.position] # Current character = string[0]
+        while self.position < len(self.input):  // While current position < length (source code)
+            current_char = self.input[self.position] // Current character = string[0]
 
-            # Skip whitespace
+            // Skip whitespace
             if current_char.isspace():
-                self.position += 1    # Ignore whitespace, move to next character
+                self.position += 1    // Ignore whitespace, move to next character
                 continue
             
-            # Identify keywords or identifiers
+            // Identify keywords or identifiers
             if current_char.isalpha():
                 start = self.position  
                 while self.position < len(self.input) and self.input[self.position].isalnum():
@@ -79,7 +79,7 @@ class LexicalAnalyzer:
                 else:
                     tokens.append(Token(TokenType.IDENTIFIER, word))
             
-            # Identify integers or floats
+            // Identify integers or floats
             elif current_char.isdigit():
                 start = self.position
                 has_decimal = False
@@ -91,7 +91,7 @@ class LexicalAnalyzer:
                     self.position += 1
                 number = self.input[start:self.position]
 
-                # If the number is followed by an alphabetic character, it is an illegal identifier
+                // If the number is followed by an alphabetic character, it is an illegal identifier
                 if self.position < len(self.input) and self.input[self.position].isalpha():
                     illegal_identifier = number
                     while self.position < len(self.input) and self.input[self.position].isalnum():
@@ -102,7 +102,7 @@ class LexicalAnalyzer:
                     print(f"Error: Illegal identifier '{illegal_identifier}' - identifiers cannot start with a digit.")
                     
                 else:
-                    # Otherwise, it's a valid integer or float literal
+                    // Otherwise, it's a valid integer or float literal
                     if '.' in number:
                         tokens.append(Token(TokenType.FLOAT_LITERAL, number))
                     else:
