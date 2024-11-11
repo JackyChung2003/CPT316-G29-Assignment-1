@@ -16,7 +16,7 @@ Code Explanation (Jacky can see here)
            UNKNOWN = "UNKNOWN"         // @, $, ~, `
            ILLEGAL_IDENTIFIER = "ILLEGAL_IDENTIFIER"
 
-2. Initialize token - enum type & actual value. Printed in final output
+2. Initialize token enum type & actual value. Will be printed in final output
    
        class Token:
            def __init__(self, type: TokenType, value: str):
@@ -28,11 +28,9 @@ Code Explanation (Jacky can see here)
 4. Lexical analysis starts here! 
 
         Parts in this section:
-        (a) Define rules to check if its an alphabet, integer or alphanumerical (Line 45 - 55)
+        (a) Define rules to check if character is an alphabet, integer or alphanumerical
         (b) Traverse through the input and separate character into individual tokens
-        (c)  
-
-
+        (c) 
 
    Code
 
