@@ -2,7 +2,7 @@
 
 Code Explanation (Jacky can see here)
 
-1. Just to define the Enum types that exist in our code
+1. Define Enum Type in our code.
 
         class TokenType(Enum):
            KEYWORD = "KEYWORD"
@@ -16,7 +16,7 @@ Code Explanation (Jacky can see here)
            UNKNOWN = "UNKNOWN"         // @, $, ~, `
            ILLEGAL_IDENTIFIER = "ILLEGAL_IDENTIFIER"
 
-2. To be used in the final output. Basically, it prints each tokens enum type and actual value
+2. Print each tokens - enum type & actual value. Printed in final output
    
        class Token:
            def __init__(self, type: TokenType, value: str):
