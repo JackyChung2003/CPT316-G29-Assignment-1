@@ -34,7 +34,7 @@ Code Explanation (Jacky can see here)
         (b) Traverse through the input and separate character into individual tokens
         
 
-Code
+Code Segment 1
 
         // Class that implement lexical analyzer
         class LexicalAnalyzer:
@@ -46,7 +46,7 @@ Code
                               # Set that stores keywords.
                               # Later used to identify if input is a keyword
 
-Code (Part a) 
+Code Segment 2
 
            # Python has a library which detect alphabets, numerics & alphanumeric
            # Function to check if character is alphabetic
@@ -61,7 +61,7 @@ Code (Part a)
             def is_alphanumeric(self, char: str) -> bool:
                 return char.isalnum()                
 
-Code (Part b)
+Code Segement 3
 
           # Function to tokenize the input string
             def tokenize(self) -> List[Token]:  # Tokenize Function is called in main function 
@@ -76,7 +76,8 @@ Code (Part b)
                 self.position += 1   
                 continue
    
-Code (Part b) - Identifying Keyword, Identifier, Float_Literal, Integer_literal
+Code Segment 4 
+- Identifying Keyword, Identifier, Float_Literal, Integer_literal
    
             # Identify keywords or identifiers
             if current_char.isalpha():
@@ -124,7 +125,8 @@ Code (Part b) - Identifying Keyword, Identifier, Float_Literal, Integer_literal
                     else:
                         tokens.append(Token(TokenType.INTEGER_LITERAL, number))
 
-Code (Part b) - identifying operators, separator, punctuation & unknown char
+Code Segment 5 
+- identifying operators, separator, punctuation & unknown char
 
            # Identify operators
             elif current_char in "+=*/<>":
