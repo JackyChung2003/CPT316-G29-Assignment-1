@@ -32,7 +32,7 @@ Code Explanation (Jacky can see here)
         Parts in this section:
         (a) Define rules to check if character is an alphabet, integer or alphanumerical
         (b) Traverse through the input and separate character into individual tokens
-        (c) 
+        
 
    Code
 
@@ -48,7 +48,7 @@ Code Explanation (Jacky can see here)
 
    Code (Part a) 
 
-           # Python has a libraru function that detect alphabets, numerics & alphanumeric
+           # Python has a library which detect alphabets, numerics & alphanumeric
            # Function to check if character is alphabetic
             def is_alpha(self, char: str) -> bool:   
                 return char.isalpha()                
@@ -148,4 +148,34 @@ Code Explanation (Jacky can see here)
 
         return tokens
 
-   
+   # Rule 1: Check for matching {}, [], ()
+        def check_matching_bracket(code):
+            bracket_pairs = {'(':')', '{':'}', '[':']'}
+            stack = []
+
+            for char in code:
+                if char in bracket_pairs:   #Append open braces here
+                    stack.append(char)
+                elif char in bracket_pairs.values():
+                    # if stack empty || Pop element not same as input
+                    if not stack or bracket_pairs[stack.pop()] != char:   
+                        print("Rule Violation #1: Code is missing a bracket, parenthesis or curly braces")
+                        return False
+
+            #If stack has element, means code is imbalanced as there is odd bracket without its matching pair
+          
+                if stack:   
+                        print("Rule Violation #1: Code is missing a bracket, parenthesis or curly braces")
+                        return False
+
+                return True
+
+#Rule 2: Missing semicolon before closing bracket
+
+        def check_semicolon(code):
+            for i in range(1, len(code)):
+                if code[i] == '}':
+                    if code[i-1] != ';':
+                        print("Rule Violation 2: Missing semicolon before closing curly braces")
+                        return False
+            return True
