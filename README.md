@@ -107,7 +107,7 @@ Code Explanation (Jacky can see here)
                     self.position += 1
                 number = self.input[start:self.position]
 
-                // If the number is followed by an alphabetic character, it is an illegal identifier
+                # If the number is followed by an alphabetic character, it is an illegal identifier
                 if self.position < len(self.input) and self.input[self.position].isalpha():
                     illegal_identifier = number
                     while self.position < len(self.input) and self.input[self.position].isalnum():
@@ -118,7 +118,7 @@ Code Explanation (Jacky can see here)
                     print(f"Error: Illegal identifier '{illegal_identifier}' - identifiers cannot start with a digit.")
                     
                 else:
-                    // Otherwise, it's a valid integer or float literal
+                    # Otherwise, it's a valid integer or float literal
                     if '.' in number:
                         tokens.append(Token(TokenType.FLOAT_LITERAL, number))
                     else:
