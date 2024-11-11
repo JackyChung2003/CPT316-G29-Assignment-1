@@ -97,9 +97,10 @@ Code Explanation (Jacky can see here)
             elif current_char.isdigit(): 
                 start = self.position
                 has_decimal = False
-                   # Ensure checking doesn't go out of bounds && (if input is integer or floating)
+           # Ensure checking doesn't go out of bounds && (if input is integer or floating)
                 while self.position < len(self.input) and (self.input[self.position].isdigit() or self.input[self.position] == '.'): 
-                    if self.input[self.position] == '.': #If decimal is encounted, enter the if statement
+                   #If decimal is encounted, enter the if statement. (Has 2 cases)
+                    if self.input[self.position] == '.': 
                         if has_decimal:    # Case 1 - True, if decimal has encountered in input string before, then break 
                             break
                         has_decimal = True # Case 2 - False, decimal has not been encountered in input string before. So set has_decimal to True
