@@ -1,6 +1,6 @@
 # CPT316-G29-Assignment-1
 
-// Code Explanation (Jacky can see here)
+Code Explanation (Jacky can see here)
 
 1. Just to define the Enum types that exist in our code
 
@@ -32,12 +32,13 @@
    (c)  
 
 // Class that implement lexical analyzer
-class LexicalAnalyzer:
-    def __init__(self, source: str):
-        self.input = source   // Self.input is a string, it stores the users input here (source code)
-        self.position = 0     // Functions like index/pointer. Data type is int
-                              // Keep track of analyzer current position when analyzing the input. 
-        self.keyword = {"int", "float", "bool", "print", "if", "else", "return", "while"}
+                
+        class LexicalAnalyzer:
+            def __init__(self, source: str):
+                self.input = source   // Self.input is a string, it stores the users input here (source code)
+                self.position = 0     // Functions like index/pointer. Data type is int
+                                      // Keep track of analyzer current position when analyzing the input. 
+                self.keyword = {"int", "float", "bool", "print", "if", "else", "return", "while"}
                               // Set that stores keywords.
                               // Later used to identify if input is a keyword
 
