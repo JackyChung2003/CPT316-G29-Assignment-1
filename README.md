@@ -25,13 +25,16 @@ Code Explanation (Jacky can see here)
            def __str__(self):
                return f"Type: {self.type.value}, Value: {self.value}"  // Printed in the output  
 
-4. Lexical analysis starts here 
-  Parts in this section:
-   (a) Define rules to check if its a alphabet, integer or alphanumerical (Line 45 - 55)
-   (b) Traverse through the input and separate character into individual tokens
-   (c)  
+4. Lexical analysis starts here! 
 
-// Class that implement lexical analyzer
+        Parts in this section:
+        (a) Define rules to check if its a alphabet, integer or alphanumerical (Line 45 - 55)
+        (b) Traverse through the input and separate character into individual tokens
+        (c)  
+
+
+
+   // Class that implement lexical analyzer
                 
         class LexicalAnalyzer:
             def __init__(self, source: str):
