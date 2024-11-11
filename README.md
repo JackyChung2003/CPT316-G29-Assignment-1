@@ -15,17 +15,19 @@ Code Explanation (Jacky can see here)
            PUNCTUATION = "PUNCTUATION" // \", \', !
            UNKNOWN = "UNKNOWN"         // @, $, ~, `
            ILLEGAL_IDENTIFIER = "ILLEGAL_IDENTIFIER"
+   
 
-2. Initialize variable to store enum type & actual value. Will be printed in final output
+3. Initialize variable to store enum type & actual value. Will be printed in final output
    
        class Token:
            def __init__(self, type: TokenType, value: str):
                self.type = type     // Store enum type
                self.value = value   // Store actual value
            def __str__(self):
-               return f"Type: {self.type.value}, Value: {self.value}"  // Printed in the output  
+               return f"Type: {self.type.value}, Value: {self.value}"  // Printed in the output
+    
 
-4. Lexical analysis starts here! 
+4. Lexical analysis starts here.
 
         Parts in this section:
         (a) Define rules to check if character is an alphabet, integer or alphanumerical
