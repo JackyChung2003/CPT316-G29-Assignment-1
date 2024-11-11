@@ -16,7 +16,7 @@ Code Explanation (Jacky can see here)
            UNKNOWN = "UNKNOWN"         // @, $, ~, `
            ILLEGAL_IDENTIFIER = "ILLEGAL_IDENTIFIER"
 
-2. Initialize token enum type & actual value. Will be printed in final output
+2. Initialize variable to store enum type & actual value. Will be printed in final output
    
        class Token:
            def __init__(self, type: TokenType, value: str):
