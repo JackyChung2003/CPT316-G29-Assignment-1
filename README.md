@@ -2,7 +2,7 @@
 
 Code Explanation (Jacky can see here)
 
-###1. Define enum type in our code.
+### 1. Define enum type in our code.
 
         class TokenType(Enum):
            KEYWORD = "KEYWORD"
@@ -17,7 +17,7 @@ Code Explanation (Jacky can see here)
            ILLEGAL_IDENTIFIER = "ILLEGAL_IDENTIFIER"
    
 
-###2. Initialize variable to store enum type & actual value. Will be printed in final output
+### 2. Initialize variable to store enum type & actual value. Will be printed in final output
    
        class Token:
            def __init__(self, type: TokenType, value: str):
