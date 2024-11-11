@@ -76,7 +76,7 @@ Code Explanation (Jacky can see here)
                 self.position += 1   
                 continue
    
-   Code (Part b - Identifying Keyword, alphabets, integer, floating and alphanumerical)
+   Code (Part b) - Identifying Keyword, Identifier, Float_Literal, Integer_literal
    
             # Identify keywords or identifiers
             if current_char.isalpha():
