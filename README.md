@@ -48,17 +48,18 @@ Code Explanation (Jacky can see here)
 
    Code (Part a) 
 
-        // Function to check if character is alphabetic
-            def is_alpha(self, char: str) -> bool:   // Returm True/False
-                return char.isalpha()                // Detects if its an alphabet
+           // Python has a libraru function that detect alphabets, numerics & alphanumeric
+           // Function to check if character is alphabetic
+            def is_alpha(self, char: str) -> bool:   
+                return char.isalpha()                
     
           // Function to check if character is digit
             def is_digit(self, char:str) -> bool:
-                return char.isdigit()                // Detects if its a number
+                return char.isdigit()                
     
           // Function to check if character is alphanumeric
             def is_alphanumeric(self, char: str) -> bool:
-                return char.isalnum()                // Detects if its an alpha + number
+                return char.isalnum()                
 
    Code (Part b)
 
@@ -72,15 +73,16 @@ Code Explanation (Jacky can see here)
 
             // Skip whitespace
             if current_char.isspace():
-                self.position += 1    // Ignore whitespace, move to next character
+                self.position += 1   
                 continue
             
-            // Identify keywords or identifiers
+            # Identify keywords or identifiers
             if current_char.isalpha():
-                start = self.position  
+                start = self.position
+                # Ensure checking doesn't go out of bounds && check for alphanumeric
                 while self.position < len(self.input) and self.input[self.position].isalnum():
-                    self.position += 1
-                word = self.input[start:self.position]
+                    self.position += 1        
+                word = self.input[start:self.position] #
 
                 if word in self.keyword:
                     tokens.append(Token(TokenType.KEYWORD, word))
