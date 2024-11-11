@@ -81,6 +81,7 @@ Code Explanation (Jacky can see here)
             # Identify keywords or identifiers
             if current_char.isalpha():
                 start = self.position
+
                 # Ensure checking doesn't go out of bounds && check for alphanumeric
                 while self.position < len(self.input) and self.input[self.position].isalnum():
                     self.position += 1        
