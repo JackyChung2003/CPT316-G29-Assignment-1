@@ -2,7 +2,7 @@
 
 Code Explanation (Jacky can see here)
 
-1. Define Enum Type in our code.
+1. Define enum type in our code.
 
         class TokenType(Enum):
            KEYWORD = "KEYWORD"
