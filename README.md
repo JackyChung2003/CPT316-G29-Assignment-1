@@ -28,14 +28,15 @@ Code Explanation (Jacky can see here)
 4. Lexical analysis starts here! 
 
         Parts in this section:
-        (a) Define rules to check if its a alphabet, integer or alphanumerical (Line 45 - 55)
+        (a) Define rules to check if its an alphabet, integer or alphanumerical (Line 45 - 55)
         (b) Traverse through the input and separate character into individual tokens
         (c)  
 
 
 
-   // Class that implement lexical analyzer
-                
+
+
+        // Class that implement lexical analyzer
         class LexicalAnalyzer:
             def __init__(self, source: str):
                 self.input = source   // Self.input is a string, it stores the users input here (source code)
