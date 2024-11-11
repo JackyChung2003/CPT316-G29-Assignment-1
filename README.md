@@ -124,3 +124,28 @@ Code Explanation (Jacky can see here)
                     else:
                         tokens.append(Token(TokenType.INTEGER_LITERAL, number))
 
+   Code (Part b) - identifying operators, separator, punctuation & unknown char
+
+           # Identify operators
+            elif current_char in "+=*/<>":
+                tokens.append(Token(TokenType.OPERATOR, current_char))
+                self.position += 1
+
+            # Identify separator
+            elif current_char in "();{}":
+                tokens.append(Token(TokenType.SEPARATOR, current_char))
+                self.position += 1
+
+            # Identify punctuation
+            elif current_char in "!\"\'":
+                tokens.append(Token(TokenType.PUNCTUATION, current_char))
+                self.position += 1
+
+            #Handle unknown character
+            else:
+                tokens.append(Token(TokenType.UNKNOWN, current_char))
+                self.position += 1
+
+        return tokens
+
+   
