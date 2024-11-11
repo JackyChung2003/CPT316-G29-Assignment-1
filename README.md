@@ -90,15 +90,16 @@ Code Explanation (Jacky can see here)
                 else:
                     tokens.append(Token(TokenType.IDENTIFIER, word))
             
-            // Identify integers or floats
-            elif current_char.isdigit():
+            # Identify integers or floats
+            elif current_char.isdigit(): 
                 start = self.position
                 has_decimal = False
-                while self.position < len(self.input) and (self.input[self.position].isdigit() or self.input[self.position] == '.'):
-                    if self.input[self.position] == '.':
-                        if has_decimal:
+                   # Ensure checking doesn't go out of bounds && (if input is integer or floating)
+                while self.position < len(self.input) and (self.input[self.position].isdigit() or self.input[self.position] == '.'): 
+                    if self.input[self.position] == '.': #If decimal is encounted, enter the if statement
+                        if has_decimal:    # Case 1 - True, if decimal has encountered before, then break 
                             break
-                        has_decimal = True
+                        has_decimal = True # Case 2 - False, decimal has not been encountered before. So set has_decimal to True
                     self.position += 1
                 number = self.input[start:self.position]
 
