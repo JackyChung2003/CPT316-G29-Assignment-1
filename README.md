@@ -4,29 +4,28 @@
 
 1. Just to define the Enum types that exist in our code
 
-class TokenType(Enum):
-    KEYWORD = "KEYWORD"
-    IDENTIFIER = "IDENTIFIER"
-    INTEGER_LITERAL = "INTEGER_LITERAL"
-    FLOAT_LITERAL = "FLOAT_LITERAL"
-    OPERATOR = "OPERATOR"       // Include arithmetic & relational
-    ASSIGNMENT = "ASSIGNMENT"
-    SEPARATOR = "SEPARATOR"     //{}, [], (), ;, :, ","
-    PUNCTUATION = "PUNCTUATION" // \", \', !
-    UNKNOWN = "UNKNOWN"         // @, $, ~, `
-    ILLEGAL_IDENTIFIER = "ILLEGAL_IDENTIFIER"
+        class TokenType(Enum):
+           KEYWORD = "KEYWORD"
+           IDENTIFIER = "IDENTIFIER"
+           INTEGER_LITERAL = "INTEGER_LITERAL"
+           FLOAT_LITERAL = "FLOAT_LITERAL"
+           OPERATOR = "OPERATOR"       // Include arithmetic & relational
+           ASSIGNMENT = "ASSIGNMENT"
+           SEPARATOR = "SEPARATOR"     //{}, [], (), ;, :, ","
+           PUNCTUATION = "PUNCTUATION" // \", \', !
+           UNKNOWN = "UNKNOWN"         // @, $, ~, `
+           ILLEGAL_IDENTIFIER = "ILLEGAL_IDENTIFIER"
 
 2. To be used in the final output. Basically, it prints each tokens enum type and actual value
+   
+       class Token:
+           def __init__(self, type: TokenType, value: str):
+               self.type = type     // Store enum type
+               self.value = value   // Store actual value
+           def __str__(self):
+               return f"Type: {self.type.value}, Value: {self.value}"  // Printed in the output  
 
-   class Token:
-       def __init__(self, type: TokenType, value: str):
-        self.type = type     // Store enum type
-        self.value = value   // Store actual value
-
-       def __str__(self):
-        return f"Type: {self.type.value}, Value: {self.value}"  // Printed in the output  
-
-3. Lexical analysis starts here 
+4. Lexical analysis starts here 
   Parts in this section:
    (a) Define rules to check if its a alphabet, integer or alphanumerical (Line 45 - 55)
    (b) Traverse through the input and separate character into individual tokens
