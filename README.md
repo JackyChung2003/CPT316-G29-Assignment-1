@@ -219,29 +219,29 @@
 ### 6. Language Specification
 
 #### Syntax and Grammar Rules:
-(i) Keywords: Defined any reserved words in MiniLang, cannot be used as identifiers
-        Example: int, float, if, else, while, print, etc.
-(ii) Identifiers: In MiniLang, identifiers can start with alphabets and could include letters and numbers after that
-        Example: Variable1, Boiboiboi123
-(iii) Literals: Specifiy the kinds of constant values allowed, such as integers and floats
-        Example: 12, 3.142
-(iv) Operators: List of operators MiniLang supports
-        Example: +, -, *, / (Arithmetic operators)
-        Example: <=, >=, ==, != (Relational operators)
-(v) Separators and Punctuations: Symbols to organize the code. 
-        Example: {}, [], (), ; (Separators)
-        Example: \", \', :, (Punctuations)
+        (i) Keywords: Defined any reserved words in MiniLang, cannot be used as identifiers
+                Example: int, float, if, else, while, print, etc.
+        (ii) Identifiers: In MiniLang, identifiers can start with alphabets and could include letters and numbers after that
+                Example: Variable1, Boiboiboi123
+        (iii) Literals: Specifiy the kinds of constant values allowed, such as integers and floats
+                Example: 12, 3.142
+        (iv) Operators: List of operators MiniLang supports
+                Example: +, -, *, / (Arithmetic operators)
+                Example: <=, >=, ==, != (Relational operators)
+        (v) Separators and Punctuations: Symbols to organize the code. 
+                Example: {}, [], (), ; (Separators)
+                Example: \", \', :, (Punctuations)
         
 #### Semantics:        
-(i) Meaning of statemens: Explain what each language construct is supposed to do
-        Example1: int x = 5; 
-        Explanation: declare variable x as an integer and assign it to value 5
-        Example2: if(x < 10) {print(x);}
-        Explanation: if x is less than 10 is true, print value of x
+        (i) Meaning of statemens: Explain what each language construct is supposed to do
+                Example1: int x = 5; 
+                Explanation: declare variable x as an integer and assign it to value 5
+                Example2: if(x < 10) {print(x);}
+                Explanation: if x is less than 10 is true, print value of x
 
-(ii) Variable Declaration and Assignment: Define the behavior of declaring and assigning variable
-        Example: How does MiniLang hangle data types, can you assigned a float value to int variable
+        (ii) Variable Declaration and Assignment: Define the behavior of declaring and assigning variable
+                Example: How does MiniLang hangle data types, can you assigned a float value to int variable
 
-(iii) Function or statement: Describe any build-in functions, like print. 
-        Print function output a variable or literal to the console
-        Example: print(x); display the value of x
+        (iii) Function or statement: Describe any build-in functions, like print. 
+                Print function output a variable or literal to the console
+                Example: print(x); display the value of x
