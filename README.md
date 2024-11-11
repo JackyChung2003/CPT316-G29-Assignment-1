@@ -9,11 +9,11 @@ Code Explanation (Jacky can see here)
            IDENTIFIER = "IDENTIFIER"
            INTEGER_LITERAL = "INTEGER_LITERAL"
            FLOAT_LITERAL = "FLOAT_LITERAL"
-           OPERATOR = "OPERATOR"       // Include arithmetic & relational
+           OPERATOR = "OPERATOR"       # Include arithmetic & relational
            ASSIGNMENT = "ASSIGNMENT"
-           SEPARATOR = "SEPARATOR"     //{}, [], (), ;, :, ","
-           PUNCTUATION = "PUNCTUATION" // \", \', !
-           UNKNOWN = "UNKNOWN"         // @, $, ~, `
+           SEPARATOR = "SEPARATOR"     # {}, [], (), ;, :, ","
+           PUNCTUATION = "PUNCTUATION" # \", \', !
+           UNKNOWN = "UNKNOWN"         # @, $, ~, `
            ILLEGAL_IDENTIFIER = "ILLEGAL_IDENTIFIER"
    
 
@@ -21,10 +21,10 @@ Code Explanation (Jacky can see here)
    
        class Token:
            def __init__(self, type: TokenType, value: str):
-               self.type = type     // Store enum type
-               self.value = value   // Store actual value
+               self.type = type     # Store enum type
+               self.value = value   # Store actual value
            def __str__(self):
-               return f"Type: {self.type.value}, Value: {self.value}"  // Printed in the output
+               return f"Type: {self.type.value}, Value: {self.value}"  # Printed in the output
     
 
 4. Lexical analysis starts here.
@@ -39,39 +39,39 @@ Code Explanation (Jacky can see here)
         // Class that implement lexical analyzer
         class LexicalAnalyzer:
             def __init__(self, source: str):
-                self.input = source   // Self.input is a string, it stores the users input here (source code)
-                self.position = 0     // Functions like index/pointer. Data type is int
-                                      // Keep track of analyzer current position when analyzing the input. 
+                self.input = source   # Self.input is a string, it stores the users input here (source code)
+                self.position = 0     # Functions like index/pointer. Data type is int
+                                      # Keep track of analyzer current position when analyzing the input. 
                 self.keyword = {"int", "float", "bool", "print", "if", "else", "return", "while"}
-                              // Set that stores keywords.
-                              // Later used to identify if input is a keyword
+                              # Set that stores keywords.
+                              # Later used to identify if input is a keyword
 
    Code (Part a) 
 
-           // Python has a libraru function that detect alphabets, numerics & alphanumeric
-           // Function to check if character is alphabetic
+           # Python has a libraru function that detect alphabets, numerics & alphanumeric
+           # Function to check if character is alphabetic
             def is_alpha(self, char: str) -> bool:   
                 return char.isalpha()                
     
-          // Function to check if character is digit
+          # Function to check if character is digit
             def is_digit(self, char:str) -> bool:
                 return char.isdigit()                
     
-          // Function to check if character is alphanumeric
+          # Function to check if character is alphanumeric
             def is_alphanumeric(self, char: str) -> bool:
                 return char.isalnum()                
 
    Code (Part b)
 
-          // Function to tokenize the input string
-            def tokenize(self) -> List[Token]:  // Tokenize Function is called in main function 
-                                              // It returns a list of token in the array
-                tokens = []                   // Initialize an empty list to store tokens
+          # Function to tokenize the input string
+            def tokenize(self) -> List[Token]:  # Tokenize Function is called in main function 
+                                              # It returns a list of token in the array
+                tokens = []                   # Initialize an empty list to store tokens
 
-        while self.position < len(self.input):  // While current position < length (source code)
-            current_char = self.input[self.position] // Current character = string[0]
+        while self.position < len(self.input):  # While current position < length (source code)
+            current_char = self.input[self.position] # Current character = string[0]
 
-            // Skip whitespace
+           `# Skip whitespace
             if current_char.isspace():
                 self.position += 1   
                 continue
@@ -82,7 +82,8 @@ Code Explanation (Jacky can see here)
                 # Ensure checking doesn't go out of bounds && check for alphanumeric
                 while self.position < len(self.input) and self.input[self.position].isalnum():
                     self.position += 1        
-                word = self.input[start:self.position] #
+                word = self.input[start:self.position] # Extracts the substring from start to the current self.position
+                                                       # Contains all the consecutive alphanumeric characters found
 
                 if word in self.keyword:
                     tokens.append(Token(TokenType.KEYWORD, word))
