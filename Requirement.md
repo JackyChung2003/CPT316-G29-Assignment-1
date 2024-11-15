@@ -9,7 +9,7 @@ PoliteLang is a friendly and expressive programming language that uses polite sy
 - **`show`**: Prints text as-is.
 
   ```plaintext
-  show("Hello from PoliteLang!");
+  show("Hello from PoliteLang!") thanks~
   ```
 
   **Output: Hello from PoliteLang!**
@@ -17,7 +17,7 @@ PoliteLang is a friendly and expressive programming language that uses polite sy
 - **`whisper`**: Prints text in lowercase.
 
   ```plaintext
-  whisper("This is a quiet message.");
+  whisper("This is a quiet message.") thanks~
   ```
 
   **Output: this is a quiet message.**
@@ -25,7 +25,7 @@ PoliteLang is a friendly and expressive programming language that uses polite sy
 - **`shout`**: Prints text in uppercase.
 
   ```plaintext
-  shout("congratulations!");
+  shout("congratulations!") thanks~
   ```
 
   **Output: this is a quiet message.**
@@ -35,7 +35,7 @@ PoliteLang is a friendly and expressive programming language that uses polite sy
 - **`show`**: Prints text as-is.
 
   ```plaintext
-  show("Hello from PoliteLang!");
+  show("Hello from PoliteLang!") thanks~
   ```
 
   **Output: Hello from PoliteLang!**
@@ -56,8 +56,8 @@ PoliteLang is a friendly and expressive programming language that uses polite sy
 - **`yep`** and **`nah`** for `true` and `false`.
 
   ```plaintext
-  pls isComplete = nah thanks;
-  pls isWinner = yep thanks;
+  pls isComplete = nah thanks~
+  pls isWinner = yep thanks~
   ```
 
   **Effect**: These lines set `isComplete` to `false` (nah) and `isWinner` to `true` (yep).
@@ -68,17 +68,17 @@ PoliteLang is a friendly and expressive programming language that uses polite sy
 
   ```plaintext
   Check (score > 10) {
-      shout("High score!");
+      shout("High score!") thanks~
   } otherwise {
-      whisper("Keep trying...");
+      whisper("Keep trying...") thanks~
   }
   ```
 
 - **`Given`**: For `for ` loops.
 
   ```plaintext
-  Given (pls i = 0 thanks; i < 3; pls i = i + 1 thanks) {
-    show("Loop iteration:", i);
+  Given (pls i = 0 thanks~ i < 3 thanks~ pls i = i + 1 thanks) {
+    show("Loop iteration:", i) thanks~
   }
   ```
 
