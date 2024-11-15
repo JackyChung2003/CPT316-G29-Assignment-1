@@ -8,10 +8,104 @@ class SyntaxError(Exception):
     pass
 
 
+# AST Node classes
+class ASTNode:
+    def __init__(self, type_, value=None):
+        self.type = type_
+        self.value = value
+        self.children = []
+
+    def add_child(self, child):
+        self.children.append(child)
+
+    # def __repr__(self):
+    #     return f"{self.type}({self.value}) -> {self.children}"
+
+    # def __repr__(self, level=0):
+    #     # This will return a string with indentation for hierarchical tree structure
+    #     ret = "\t" * level + f"{self.type}({self.value if self.value else ''})\n"
+    #     for child in self.children:
+    #         ret += child.__repr__(level + 1)
+    #     return ret
+
+    def to_tree(self, level=0):
+        # Create a hierarchical tree-like string representation
+        ret = "\t" * level + f"{self.type}({self.value if self.value else ''})\n"
+        for child in self.children:
+            if isinstance(child, ASTNode):  # Ensure child is an ASTNode
+                ret += child.to_tree(level + 1)
+            elif isinstance(child, list):  # Handle lists of ASTNodes
+                for sub_child in child:
+                    ret += sub_child.to_tree(level + 1)
+            else:
+                raise TypeError("Invalid child type in ASTNode")
+        return ret
+
+    def __repr__(self):
+        # Keep __repr__ simple for debugging purposes
+        return f"{self.type}({self.value})"
+
+
+class AssignmentNode(ASTNode):
+    def __init__(self, identifier, expression):
+        super().__init__("Assignment")
+        self.add_child(ASTNode("Identifier", identifier))
+        self.add_child(expression)
+
+
+class PrintNode(ASTNode):
+    def __init__(self, print_type, expression):
+        super().__init__(f"{print_type.capitalize()}Print")
+        self.add_child(expression)
+
+
+class IfNode(ASTNode):
+    def __init__(self, condition, if_body, else_body=None):
+        super().__init__("If")
+        self.add_child(condition)
+        self.add_child(if_body)
+        if else_body:
+            self.add_child(else_body)
+
+
+class WhileNode(ASTNode):
+    def __init__(self, condition, body):
+        super().__init__("While")
+        self.add_child(condition)
+        self.add_child(body)
+
+
+class ForNode(ASTNode):
+    def __init__(self, identifier, expression, body):
+        super().__init__("ForEach")
+        self.add_child(ASTNode("Identifier", identifier))
+        self.add_child(expression)
+        self.add_child(body)
+
+
+class BinaryOperationNode(ASTNode):
+    def __init__(self, operator, left, right):
+        super().__init__("BinaryOperation", operator)
+        self.add_child(left)
+        self.add_child(right)
+
+
 class Parser:
     def __init__(self, tokens: List[Token]):
         self.tokens = tokens
         self.position = 0
+
+    # def display_ast(self, ast):
+    # print("Abstract Syntax Tree (AST):")
+    # for statement in ast:
+    # print(
+    # statement.to_tree()
+    # )  # Each statement is printed with tree-like structure from __repr__
+
+    def display_ast(self, ast):
+        print("Abstract Syntax Tree (AST):")
+        for statement in ast:
+            print(statement.to_tree())
 
     # Utility functions for parser
     def current_token(self):
@@ -73,7 +167,8 @@ class Parser:
         self.expect(TokenType.OPERATOR, "=")
         expression = self.parse_expression()
         self.expect(TokenType.END_STATEMENT, "thanks~")
-        return f"Assignment({identifier.value} = {expression})"
+        # return f"Assignment({identifier.value} = {expression})"   # print the assignment statement for now
+        return AssignmentNode(identifier, expression)
 
     # Parse a print statement (show, whisper, or shout)
     # Using grammar rules: <PRINT> ::= show(<EXPRESSION>) thanks~
@@ -85,7 +180,8 @@ class Parser:
         expression = self.parse_expression()
         self.expect(TokenType.SEPARATOR, ")")
         self.expect(TokenType.END_STATEMENT, "thanks~")
-        return f"{print_type.capitalize()}({expression})"
+        # return f"{print_type.capitalize()}({expression})"  # Return the print statement for now
+        return PrintNode(print_type, expression)
 
     # Parse an if-else statement
     # Using grammar rules: <IF> ::= Check (<CONDITION>) { <STATEMENT_LIST> } [otherwise { <STATEMENT_LIST> }]
@@ -105,7 +201,8 @@ class Parser:
             else_body = self.parse_program_block()
             self.expect(TokenType.SEPARATOR, "}")
 
-        return f"If({condition}) Then {if_body} Else {else_body}"
+        # return f"If({condition}) Then {if_body} Else {else_body}"   # Return the if-else statement for now
+        return IfNode(condition, if_body, else_body)
 
     # Parse a while loop
     # Using grammar rules: <WHILE> ::= During (<CONDITION>) { <STATEMENT_LIST> }
@@ -117,7 +214,8 @@ class Parser:
         self.expect(TokenType.SEPARATOR, "{")
         body = self.parse_program_block()
         self.expect(TokenType.SEPARATOR, "}")
-        return f"While({condition}) Do {body}"
+        # return f"While({condition}) Do {body}"      # Return the while loop statement for now
+        return WhileNode(condition, body)
 
     # Parse a for loop
     # Using grammar rules: <FOR> ::= Given <IDENTIFIER> in <EXPRESSION> { <STATEMENT_LIST> }
@@ -129,15 +227,22 @@ class Parser:
         self.expect(TokenType.SEPARATOR, "{")
         body = self.parse_program_block()
         self.expect(TokenType.SEPARATOR, "}")
-        return f"ForEach({identifier.value} in {expression}) Do {body}"
+        # return f"ForEach({identifier.value} in {expression}) Do {body}" # Return the for loop statement for now
+        return ForNode(identifier.value, expression, body)
+        # return ForNode(identifier, expression, body)
 
     # Parse a block of statements
     # Using grammar rules: <STATEMENT_LIST> ::= <STATEMENT> <STATEMENT_LIST> | ε
     def parse_program_block(self):
-        statements = []
+
+        # statements = []
+        # while self.current_token() and self.current_token().type != TokenType.SEPARATOR:
+        #     statements.append(self.parse_statement())
+        # return statements
+        block_node = ASTNode("Block")  # Create a node for the block
         while self.current_token() and self.current_token().type != TokenType.SEPARATOR:
-            statements.append(self.parse_statement())
-        return statements
+            block_node.add_child(self.parse_statement())
+        return block_node
 
     # Parse an expression
     # Using grammar rules: <EXPRESSION> ::= <PRIMARY> <OPERATOR> <PRIMARY> | <PRIMARY>
@@ -152,7 +257,8 @@ class Parser:
             self.advance()  # Move past the operator
             right = self.parse_primary()  # Parse the right side of the expression
             left = (
-                f"({left} {operator.value} {right})"  # Combine into a binary expression
+                # f"({left} {operator.value} {right})"  # Combine into a binary expression for now
+                BinaryOperationNode(operator.value, left, right)
             )
 
         return left
@@ -164,15 +270,18 @@ class Parser:
 
         if token.type == TokenType.LITERAL:
             self.advance()
-            return f"Literal({token.value})"
+            # return f"Literal({token.value})"    # Return the literal value for now
+            return ASTNode("Literal", token.value)
         elif token.type == TokenType.IDENTIFIER:
             self.advance()
-            return f"Identifier({token.value})"
+            # return f"Identifier({token.value})"  # Return the identifier for now
+            return ASTNode("Identifier", token.value)
         elif token.type == TokenType.SEPARATOR and token.value == "(":
             self.advance()  # Skip the opening parenthesis
             expr = self.parse_expression()  # Parse the inner expression
             self.expect(TokenType.SEPARATOR, ")")  # Expect a closing parenthesis
-            return f"({expr})"  # Return the grouped expression
+            # return f"({expr})"  # Return the grouped expression for now
+            return expr
         else:
             raise SyntaxError(f"Expected expression, but got {token}")
 
@@ -202,7 +311,10 @@ if __name__ == "__main__":
 
     try:
         ast = parser.parse_program()
-        for statement in ast:
-            print(statement)
+        # print("\nAbstract Syntax Tree (AST):")
+        # for statement in ast:
+        #     print(statement)
+
+        parser.display_ast(ast)  # Call the new method to display the tree
     except SyntaxError as e:
         print(f"Syntax Error: {e}")
