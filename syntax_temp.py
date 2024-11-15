@@ -1,5 +1,6 @@
 from typing import List, Union
 from lexical_temp import Token, TokenType, LexicalAnalyzer
+from PrettyPrint import PrettyPrintTree
 
 # Assuming Token and TokenType are already defined, as in your lexical analysis
 
@@ -106,6 +107,32 @@ class Parser:
         print("Abstract Syntax Tree (AST):")
         for statement in ast:
             print(statement.to_tree())
+
+    # def visualize_ast(self, ast_root):
+    #     """
+    #     Visualizes the AST using PrettyPrintTree.
+    #     """
+    #     # Create a PrettyPrintTree object
+    #     pt = PrettyPrintTree(
+    #         lambda node: node.children,  # Function to get child nodes
+    #         lambda node: f"{node.type}\n{node.value if node.value else ''}",  # Function to get node label
+    #     )
+    #     pt(ast_root)  # Print the tree to the console
+
+    def visualize_ast(self, ast_statements):
+        # Create a dummy root node to hold the entire program
+        program_root = ASTNode("Program")
+
+        # Add each top-level statement as a child of the root
+        for statement in ast_statements:
+            program_root.add_child(statement)
+
+        # Visualize using PrettyPrintTree
+        pt = PrettyPrintTree(
+            lambda node: node.children,  # Function to get child nodes
+            lambda node: f"{node.type}\n{node.value if node.value else ''}",  # Function to get node label
+        )
+        pt(program_root)  # Print the full program tree
 
     # Utility functions for parser
     def current_token(self):
@@ -316,5 +343,8 @@ if __name__ == "__main__":
         #     print(statement)
 
         parser.display_ast(ast)  # Call the new method to display the tree
+        # parser.visualize_ast(ast[1])
+
+        parser.visualize_ast(ast)  # Visualize the full program tree
     except SyntaxError as e:
         print(f"Syntax Error: {e}")
