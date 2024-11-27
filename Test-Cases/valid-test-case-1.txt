@@ -1,9 +1,5 @@
-pls score = 10 thanks~
-
-show("Hello from PoliteLang!") thanks~
-
-Check (score >= 5) {
-    shout("High score!") thanks~
-} otherwise {
-    whisper("Keep trying...") thanks~
-}
+pls x = 10 thanks~
+pls y = 20 thanks~
+pls sum = x + y thanks~
+show("The sum is:") thanks~
+show(sum) thanks~
